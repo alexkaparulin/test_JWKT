@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const express = require("express");
+const cors = require('cors');
 const app = express();
 
 require("dotenv").config();
@@ -9,6 +10,8 @@ const privateKey = process.env.PRIVATE_KEY;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors());
 
 const generateToken = (email) => {
     const payload = {
